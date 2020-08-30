@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1> Welcome to the battle page </h1>
+    <div id="instructions">
+        <div>
+            <h3> pikatchu </h3>
+        <table>
+            <tr>
+                <td>attack type </td>
+                <td> damage range </td>
+                <td> healing </td>
+                <td> attack points </td>
+                <td> counts </td>
+                
+            </tr>
+            <tr>
+                <td> attack 1</td>
+                <td> 1-10 </td>
+                <td> 0 </td>
+                <td> 10 </td>
+                <td> 8 </td>
+
+            </tr>
+            <tr>
+                <td> attack 2</td>
+                <td> 10-25 </td>
+                <td> 0 </td>
+                <td> 15 </td>
+                <td> 5 </td>
+            </tr>
+            <tr>
+                <td> attack 3</td>
+                <td> 10-25 </td>
+                <td> 10 </td>
+                <td> 20 </td>
+                <td> 3 </td>
+            </tr>
+            <tr>
+                <td> attack 4</td>
+                <td> 20-30 </td>
+                <td> 0 </td>
+                <td> 20 </td>
+                <td> 5 </td>
+            </tr>
+            <tr>
+                <td> skip</td>
+                <td> 0 </td>
+                <td> 15 </td>
+                <td> +15 </td>
+                <td> 8 </td>
+            </tr>
+        </table>
+        </div>
+        <div>
+            <h3> chaizard </h3>
+        <table>
+            <tr>
+                <td>attack type </td>
+                <td> damage range </td>
+                <td> healing </td>
+                <td> attack points </td>
+                <td> counts </td>
+                
+            </tr>
+            <tr>
+                <td> attack 1</td>
+                <td> 20-50 </td>
+                <td> 0 </td>
+                <td> 25 </td>
+                <td> 2 </td>
+
+            </tr>
+            <tr>
+                <td> attack 2</td>
+                <td> 10-30 </td>
+                <td> 0 </td>
+                <td> 25 </td>
+                <td> 2 </td>
+            </tr>
+            <tr>
+                <td> attack 3</td>
+                <td> 10-20 </td>
+                <td> 15 </td>
+                <td> 15 </td>
+                <td> 5 </td>
+            </tr>
+            <tr>
+                <td> attack 4</td>
+                <td> 20-60 </td>
+                <td> 0 </td>
+                <td> 30 </td>
+                <td> 2 </td>
+            </tr>
+            <tr>
+                <td> skip</td>
+                <td> 0 </td>
+                <td> 20 </td>
+                <td> +10 </td>
+                <td> 3 </td>
+            </tr>
+        </table>
+        </div>
+        <div>
+            <h3> Bulbasaur </h3>
+        <table>
+            <tr>
+                <td>attack type </td>
+                <td> damage range </td>
+                <td> healing </td>
+                <td> attack points </td>
+                <td> counts </td>
+                
+            </tr>
+            <tr>
+                <td> attack 1</td>
+                <td> 0-10 </td>
+                <td> 5 </td>
+                <td> 10 </td>
+                <td> 5 </td>
+
+            </tr>
+            <tr>
+                <td> attack 2</td>
+                <td> 10-25 </td>
+                <td> 10</td>
+                <td> 15 </td>
+                <td> 5 </td>
+            </tr>
+            <tr>
+                <td> attack 3</td>
+                <td> 25-40 </td>
+                <td> 0 </td>
+                <td> 25 </td>
+                <td> 5 </td>
+            </tr>
+            <tr>
+                <td> attack 4</td>
+                <td> 40-45 </td>
+                <td> 0 </td>
+                <td> 40 </td>
+                <td> 3 </td>
+            </tr>
+            <tr>
+                <td> skip</td>
+                <td> 0 </td>
+                <td> 20 </td>
+                <td> +20 </td>
+                <td> 4 </td>
+            </tr>
+        </table>
+        </div>
+       
+    </div>
+    
+    <div id="battle"> 
+        <div id="user"> 
+            <h2 id="user_pokemon"> User pokemon : </h2>
+            <img id="user_pokemon_img" src="" alt="user_pokemon_photo">
+            <div class="attacks"> 
+                <button onclick="attack(0)"> attack 1 </button>
+                <button onclick="attack(1)"> attack 2 </button>
+                <button onclick="attack(2)"> attack 3 </button>
+                <button onclick="attack(3)"> attack 4 </button>
+                <button onclick="attack(4)"> skip </button>
+            </div>
+            <h4 id="user_currentHealth">   </h4>
+            <h4 id="user_attackPoints">  </h4>
+        </div>
+        <div id="computer">
+            <h2 id="computer_pokemon"> computer pokemon : </h2>
+            <img id="computer_pokemon_img" src="" alt="user_pokemon_photo">
+
+            <h4 id="computer_currentHealth">  </h4>
+            <h4 id="computer_attackPoints"> </h4>
+        </div>
+        <h4 id="message" ></h4>
+        <h4 id="winner"></h4>
+        
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/battle.js"></script>
+</body>
+</html>
