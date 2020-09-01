@@ -18,6 +18,14 @@ function setCountCookies(){
     Cookies.set("user_attck_count",user_countString);
     Cookies.set("computer_attck_count",computer_countString);
 }
+function allCookiesExist(){
+    if(Cookies.get("user_pokemon")== undefined || Cookies.get("user_maxHealth")== undefined || Cookies.get("user_currentHealth")== undefined || Cookies.get("user_attackPoints")== undefined || Cookies.get("user_attck_count")== undefined || Cookies.get("computer_pokemon")== undefined || Cookies.get("computer_maxHealth")== undefined || Cookies.get("computer_currentHealth")== undefined || Cookies.get("computer_attackPoints")== undefined || Cookies.get(user_pokemon)== "computer_attck_count"){
+        return false
+    }
+    else{
+        return true
+    }
+}
 
 
 
@@ -45,9 +53,9 @@ function getCountCookies(){
 
 
 function updateResults(){
-    user_currentHealth.innerHTML = "your current health is :" + user.current_health;
+    user_currentHealth.innerHTML = "your current health is :" + user.current_health +  "/" + user.max;
     user_attackPoints.innerHTML= "your current attack points :" + user.attackPoints; 
-    computer_currentHealth.innerHTML = "computer current health is : " + computer.current_health;
+    computer_currentHealth.innerHTML = "computer current health is : " + computer.current_health + "/" + computer.max;
     computer_attackPoints.innerHTML= " computer current attack points :" + computer.attackPoints; 
 
     Cookies.set("user_currentHealth",user.current_health);
@@ -175,16 +183,20 @@ function checkcount(player_attacks){
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+
 var pokemon_images={
     pikatchu: "https://cdn.ndtv.com/tech/images/gadgets/pikachu_hi_pokemon.jpg",
     chaizard: "https://vignette.wikia.nocookie.net/iso33private/images/9/95/Charizard.png/revision/latest?cb=20170727171344",
     Bulbasaur: "https://vignette.wikia.nocookie.net/pokemon-talk6406/images/4/43/Bulbasaur.png/revision/latest?cb=20170506185349"
 }
 
+
 var user= {
     pokemon : Cookies.get("user_pokemon"),
     current_health : Cookies.get("user_currentHealth"),
     attackPoints : Cookies.get("user_attackPoints"),
+    max: Cookies.get("user_maxHealth"),
     attack_count: Cookies.get("user_attck_count")
 
 }
@@ -193,6 +205,7 @@ var computer= {
     pokemon : Cookies.get("computer_pokemon"),
     current_health : Cookies.get("computer_currentHealth"),
     attackPoints : Cookies.get("computer_attackPoints"),
+    max: Cookies.get("computer_maxHealth"),
     attack_count: Cookies.get("computer_attck_count")
 
 }
@@ -318,30 +331,36 @@ var computer_pokemon_attacks = pokemon_attacks[computer.pokemon];
 
      
 
-getCountCookies(); 
+if(allCookiesExist()){
+    
+    getCountCookies(); 
 
 
-var user_pokemon = document.getElementById("user_pokemon"); 
-var user_pokemon_img = document.getElementById("user_pokemon_img");
-var computer_pokemon = document.getElementById("computer_pokemon");
-var computer_pokemon_img = document.getElementById("computer_pokemon_img");
-user_pokemon.innerHTML+= user.pokemon;
-user_pokemon_img.setAttribute("src",pokemon_images[Cookies.get("user_pokemon")]);
-computer_pokemon.innerHTML+= computer.pokemon;
-computer_pokemon_img.setAttribute("src",pokemon_images[Cookies.get("computer_pokemon")]);
-
-console.log(user.current_health);
-var user_currentHealth = document.getElementById("user_currentHealth");
-user_currentHealth.innerHTML = "your current health is :" + user.current_health;
-var user_attackPoints = document.getElementById("user_attackPoints");
-user_attackPoints.innerHTML= "your current attack points :" + user.attackPoints; 
-
-var computer_currentHealth = document.getElementById("computer_currentHealth");
-computer_currentHealth.innerHTML = "computer current health is : " + computer.current_health;
-var computer_attackPoints = document.getElementById("computer_attackPoints");
-computer_attackPoints.innerHTML= " computer current attack points :" + computer.attackPoints; 
-
-winner();
+    var user_pokemon = document.getElementById("user_pokemon"); 
+    var user_pokemon_img = document.getElementById("user_pokemon_img");
+    var computer_pokemon = document.getElementById("computer_pokemon");
+    var computer_pokemon_img = document.getElementById("computer_pokemon_img");
+    user_pokemon.innerHTML+= user.pokemon;
+    user_pokemon_img.setAttribute("src",pokemon_images[Cookies.get("user_pokemon")]);
+    computer_pokemon.innerHTML+= computer.pokemon;
+    computer_pokemon_img.setAttribute("src",pokemon_images[Cookies.get("computer_pokemon")]);
+    
+    console.log(user.current_health);
+    var user_currentHealth = document.getElementById("user_currentHealth");
+    user_currentHealth.innerHTML = "your current health is :" + user.current_health + "/" + user.max;
+    var user_attackPoints = document.getElementById("user_attackPoints");
+    user_attackPoints.innerHTML= "your current attack points :" + user.attackPoints; 
+    
+    var computer_currentHealth = document.getElementById("computer_currentHealth");
+    computer_currentHealth.innerHTML = "computer current health is : " + computer.current_health + "/" + computer.max;
+    var computer_attackPoints = document.getElementById("computer_attackPoints");
+    computer_attackPoints.innerHTML= " computer current attack points :" + computer.attackPoints; 
+    
+    winner(); 
+}
+else{
+    window.open("index.html","_self");
+}
 
 
 
